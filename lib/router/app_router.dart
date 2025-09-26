@@ -10,7 +10,7 @@ import '../views/wash_details_view.dart';
 final GoRouter router = GoRouter(
   initialLocation: '/wardrobe',
   routes: [
-    // Bottom navigation routes - with disabled swipe gestures
+
     GoRoute(
       path: '/wardrobe',
       name: 'wardrobe',
@@ -36,7 +36,7 @@ final GoRouter router = GoRouter(
       ),
     ),
     
-    // Detail routes
+
     GoRoute(
       path: '/clothing/:id',
       name: 'clothing_detail',
@@ -65,8 +65,6 @@ final GoRouter router = GoRouter(
     ),
   ],
 );
-
-// Helper function to create pages without swipe gestures for main navigation
 Page<void> _buildMainPageWithNoSwipe({
   required LocalKey key,
   required Widget child,
@@ -76,7 +74,7 @@ Page<void> _buildMainPageWithNoSwipe({
     child: child,
     transitionDuration: const Duration(milliseconds: 200),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      // Use fade transition instead of slide to prevent swipe gestures
+  
       return FadeTransition(
         opacity: animation,
         child: child,

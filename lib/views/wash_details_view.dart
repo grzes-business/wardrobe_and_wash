@@ -50,7 +50,6 @@ class WashDetailsView extends HookConsumerWidget {
       ),
       body: Column(
         children: [
-          // Wash plan name input (for new plans)
           if (isNewWashPlan) ...[
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -66,7 +65,6 @@ class WashDetailsView extends HookConsumerWidget {
             ),
           ],
           
-          // Selected clothing list
           Expanded(
             child: selectedClothing.isEmpty
                 ? const _EmptySelectionState()
@@ -130,7 +128,6 @@ class WashDetailsView extends HookConsumerWidget {
                   ),
           ),
           
-          // Action buttons
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -181,7 +178,6 @@ class WashDetailsView extends HookConsumerWidget {
     Set<String> selectedIds,
     Function(Set<String>) onSelectionChanged,
   ) {
-    // Sort clothing by wash priority (dirty/used first)
     final sortedClothing = List<Clothing>.from(allClothing);
     sortedClothing.sort((a, b) => b.washPriority.compareTo(a.washPriority));
 
@@ -207,7 +203,6 @@ class WashDetailsView extends HookConsumerWidget {
   ) async {
     try {
       if (isNewWashPlan) {
-        // Create new wash plan
         final newWashPlan = WashPlan(
           id: DateTime.now().millisecondsSinceEpoch.toString(),
           name: name,
@@ -216,9 +211,7 @@ class WashDetailsView extends HookConsumerWidget {
         );
         await washPlanNotifier.addWashPlan(newWashPlan);
       } else {
-        // Complete existing wash plan
         await washPlanNotifier.completeWashPlan(existingWashPlan!.id);
-        // Reset worn count for clothes in the wash plan
         await clothingNotifier.resetWornCount(clothingIds);
       }
       
@@ -299,7 +292,6 @@ class _ClothingSelectorSheet extends HookWidget {
         ),
         child: Column(
           children: [
-            // Handle
             Container(
               width: 40,
               height: 4,
@@ -310,7 +302,6 @@ class _ClothingSelectorSheet extends HookWidget {
               ),
             ),
             
-            // Header
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -330,7 +321,6 @@ class _ClothingSelectorSheet extends HookWidget {
               ),
             ),
             
-            // Clothing list
             Expanded(
               child: ListView.builder(
                 controller: scrollController,

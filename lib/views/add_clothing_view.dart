@@ -36,7 +36,6 @@ class AddClothingView extends HookConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Photo section (1/3 equivalent height)
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.25,
                     width: double.infinity,
@@ -84,7 +83,6 @@ class AddClothingView extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 24),
                   
-                  // Name input
                   TextField(
                     controller: nameController,
                     decoration: const InputDecoration(
@@ -96,7 +94,6 @@ class AddClothingView extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 24),
                   
-                  // Category selection
                   Text(
                     'Category',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -125,7 +122,6 @@ class AddClothingView extends HookConsumerWidget {
             ),
           ),
           
-          // Complete button
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -175,7 +171,6 @@ class AddClothingView extends HookConsumerWidget {
         selectedImage.value = File(image.path);
       }
     } catch (e) {
-      // Handle error
       debugPrint('Error picking image: $e');
     }
   }
@@ -191,7 +186,6 @@ class AddClothingView extends HookConsumerWidget {
     isLoading.value = true;
     
     try {
-      // Save image to app directory
       String? assetPath;
       
       if (imageFile != null) {

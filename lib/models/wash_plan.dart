@@ -11,7 +11,7 @@ class WashPlan extends HiveObject {
   String name;
 
   @HiveField(2)
-  List<String> clothingIds; // References to clothing IDs
+  List<String> clothingIds;
 
   @HiveField(3)
   DateTime createdAt;
@@ -31,19 +31,16 @@ class WashPlan extends HiveObject {
     this.completedAt,
   });
 
-  /// Add clothing to wash plan
   void addClothing(String clothingId) {
     if (!clothingIds.contains(clothingId)) {
       clothingIds.add(clothingId);
     }
   }
 
-  /// Remove clothing from wash plan
   void removeClothing(String clothingId) {
     clothingIds.remove(clothingId);
   }
 
-  /// Mark wash plan as completed
   void complete() {
     isCompleted = true;
     completedAt = DateTime.now();

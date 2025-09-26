@@ -1,16 +1,11 @@
-# wardrobe_wash
+# Wardrobe & Wash
 
-A new Flutter project.
+Aplikacja do śledzenia garderoby i planowania prania.
 
-## Getting Started
+Główne funkcje:
+1. Zarządzanie garderobą - dodawanie i odejmowanie elementów garderoby,
+2. Rejestrowanie zużycia elementów garderoby - poprzez specyfikację codziennego użycia ubrań śledzony jest ich zużycia
+3. Tworzenie planów prania ubrań, z priorytetyzacją brudnych ubrań w wyborze ubrań
+4. Śledzenie wykonywania planów prań - reset zużycia elementów garderoby
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Do wykonania projektu została wykorzystana asysta sztucznej inteligencji

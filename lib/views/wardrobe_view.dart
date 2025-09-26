@@ -16,7 +16,6 @@ class WardrobeView extends HookConsumerWidget {
     final clothingNotifier = ref.watch(clothingNotifierProvider.notifier);
     final allClothing = ref.watch(clothingNotifierProvider);
 
-    // Filter clothing based on search query
     final filteredClothing = useMemoized(() {
       if (searchQuery.value.isEmpty) {
         return allClothing;
@@ -31,7 +30,6 @@ class WardrobeView extends HookConsumerWidget {
       ),
       body: Column(
         children: [
-          // Search bar
           Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
             child: TextField(
@@ -60,7 +58,6 @@ class WardrobeView extends HookConsumerWidget {
             ),
           ),
           
-          // Clothing grid
           Expanded(
             child: filteredClothing.isEmpty
                 ? _EmptyState(

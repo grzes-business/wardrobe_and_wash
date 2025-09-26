@@ -39,7 +39,6 @@ class ClothingView extends HookConsumerWidget {
       ),
       body: Column(
         children: [
-          // Photo section (1/3 of remaining space)
           Expanded(
             flex: 1,
             child: Container(
@@ -58,7 +57,6 @@ class ClothingView extends HookConsumerWidget {
             ),
           ),
           
-          // Details section
           Expanded(
             flex: 2,
             child: Padding(
@@ -66,7 +64,6 @@ class ClothingView extends HookConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name
                   Text(
                     clothing.name,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -75,7 +72,6 @@ class ClothingView extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 8),
                   
-                  // Category
                   Text(
                     clothing.category.displayName,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -84,7 +80,6 @@ class ClothingView extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 16),
                   
-                  // Worn count
                   _InfoRow(
                     label: 'Worn Count',
                     value: '${clothing.wornCount} time${clothing.wornCount != 1 ? 's' : ''}',
@@ -92,7 +87,6 @@ class ClothingView extends HookConsumerWidget {
                   ),
                   const SizedBox(height: 8),
                   
-                  // Status
                   _InfoRow(
                     label: 'Status',
                     value: _getStatusText(clothing),
@@ -109,7 +103,6 @@ class ClothingView extends HookConsumerWidget {
                   
                   const Spacer(),
                   
-                  // Action buttons
                   Row(
                     children: [
                       Expanded(
@@ -194,8 +187,8 @@ class ClothingView extends HookConsumerWidget {
             onPressed: () async {
               await notifier.removeClothing(clothing.id);
               if (context.mounted) {
-                context.pop(); // Close dialog
-                context.pop(); // Go back to previous screen
+                context.pop();
+                context.pop();
               }
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),

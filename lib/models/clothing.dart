@@ -12,7 +12,7 @@ class Clothing extends HiveObject {
   String name;
 
   @HiveField(2)
-  String? assetPath; // Path to the image asset
+  String? assetPath;
 
   @HiveField(3)
   ClothingCategory category;
@@ -21,7 +21,7 @@ class Clothing extends HiveObject {
   int wornCount;
 
   @HiveField(5)
-  int previousWornCount; // For restoration when removed from today
+  int previousWornCount;
 
   @HiveField(6)
   bool isInTodaySet;
@@ -44,20 +44,16 @@ class Clothing extends HiveObject {
     this.lastWornAt,
   });
 
-  /// Check if the clothing is dirty based on worn count and category
   bool get isDirty => wornCount >= category.maxWears;
 
-  /// Check if the clothing is used (worn at least once)
   bool get isUsed => wornCount > 0;
 
-  /// Priority for wash selection (higher priority = more urgent to wash)
   int get washPriority {
     if (isDirty) return 100 + wornCount;
     if (isUsed) return 50 + wornCount;
     return wornCount;
   }
 
-  /// Add to today set and increment worn count
   void addToToday() {
     if (!isInTodaySet) {
       previousWornCount = wornCount;
@@ -67,16 +63,13 @@ class Clothing extends HiveObject {
     }
   }
 
-  /// Remove from today set and restore previous worn count
   void removeFromToday() {
     if (isInTodaySet) {
       wornCount = previousWornCount;
       isInTodaySet = false;
-      // Note: We don't reset lastWornAt as it might be useful for history
     }
   }
 
-  /// Reset worn count (used when washing is completed)
   void resetWornCount() {
     wornCount = 0;
     previousWornCount = 0;
